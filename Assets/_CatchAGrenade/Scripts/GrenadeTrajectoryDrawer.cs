@@ -18,10 +18,15 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
 
     private List<GameObject> _dots = new List<GameObject>();
     private List<Vector3[]> _reflections = new List<Vector3[]>();
+    private DirectionAfterHit[] _directionAfterHits = new DirectionAfterHit[3];
+
+    private bool _updateLine;
+
+    public DirectionAfterHit[] DirectionAfterHits => _directionAfterHits;
 
     private void Update()
     {
-        if (_dots.Count > 0)
+        if (_updateLine)
         {
             PositionDotLine();
         }
@@ -66,6 +71,7 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
         if (_dots.Count > 0)
             HideLine();
 
+        _updateLine = true;
         for (int i = 0; i < _dotsInLine; i++)
         {
             var newDot = Instantiate(_dotLinePrefab);
@@ -75,6 +81,7 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
 
     public void HideLine()
     {
+        _updateLine = false;
         if (_dots.Count == 0 || _dots[0] == null)
             return;
         
@@ -123,20 +130,22 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
                 if (Physics.Raycast(previousPosition, stepDirection.normalized, out raycastHit, stepDirection.magnitude,
                         _obstaclesLayer))
                 {
-                    var isNormalUp = raycastHit.normal.x == 0 && Math.Abs(raycastHit.normal.y - 1) < float.Epsilon &&
-                                     raycastHit.normal.z == 0;
-
                     currentPosition = raycastHit.point;
-                    currentDirection = -stepDirection +
-                                       2 * (Vector3.Dot(stepDirection, raycastHit.normal) *
-                                            raycastHit.normal); //Vector3.Reflect(stepDirection, raycastHit.normal);
+                    currentDirection = -stepDirection + 2 * (Vector3.Dot(stepDirection, raycastHit.normal) * raycastHit.normal); 
                     currentDirection = -currentDirection;
                     currentTime = 0;
 
-                    _reflections.Add(new Vector3[]
-                        { raycastHit.point, raycastHit.normal, stepDirection, -currentDirection });
+                    _reflections.Add(new Vector3[] { raycastHit.point, raycastHit.normal, stepDirection, -currentDirection });
+
+                    _directionAfterHits[reflections].HitPoint = raycastHit.point;
+                    _directionAfterHits[reflections].AfterHitDirection = currentDirection;
 
                     reflections++;
+
+                    if (raycastHit.collider.gameObject.GetComponent<EnemyBodyPart>() != null)
+                    {
+                        reflections = 3;
+                    }
                 }
 
                 _dots[i].transform.position = currentPosition;

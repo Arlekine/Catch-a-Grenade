@@ -7,11 +7,13 @@ public class CharacterControl : MonoBehaviour
     [SerializeField] private GrenadeThrower _grenadeThrower;
     [SerializeField] private GrenadeTrajectoryDrawer _trajectoryDrawer;
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private CameraCenterRotation _cameraCenterRotation;
 
     private bool _isControlling;
 
     private void Start()
     {
+        _grenadeThrower.SetControl(new Vector2(0.5f, 0.5f));
         _joystick.Pressed += () =>
         {
             _isControlling = true;
@@ -28,9 +30,15 @@ public class CharacterControl : MonoBehaviour
             _isControlling = false;
             _characterRotator.Animator.SetTrigger("Throw");
             _characterRotator.Animator.SetBool("IsAiming", _isControlling);
-            _grenadeThrower.Throw(_trajectoryDrawer.GetTrajectory());
+            _grenadeThrower.Throw(_trajectoryDrawer.DirectionAfterHits);
             _trajectoryDrawer.HideLine();
         };
+    }
+
+    private void OnDisable()
+    {
+        _joystick.Pressed = null;
+        _joystick.Released = null;
     }
 
     private void Update()
@@ -44,11 +52,13 @@ public class CharacterControl : MonoBehaviour
             _characterRotator.SetRotate(vertical);
 
             _grenadeThrower.SetControl(new Vector2(horizontal, vertical));
+            _cameraCenterRotation.Rotate(horizontal);
         }
         else
         {
             _spineRotation.SetAngle(0.5f);
             _characterRotator.SetRotate(0f);
+            _cameraCenterRotation.Rotate(0.5f);
         }
     }
 }
