@@ -54,7 +54,7 @@ public class GrenadeThrower : MonoBehaviour
 
     public void Throw(DirectionAfterHit[] directionAfterHits)
     {
-        _grenade.transform.parent = null;
+        _grenade.transform.parent = transform.parent;
         _grenade.MoveAlongTrajectory(_throwPoint.forward, directionAfterHits, _startSpeed);
         GrenadeThrowed?.Invoke();
     }

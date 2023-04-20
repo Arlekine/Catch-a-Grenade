@@ -36,6 +36,11 @@ public class Car : Destractable
         PathEnded?.Invoke();
     }
 
+    public void Activate()
+    {
+        _carMover.Activate();
+    }
+
     public override List<Rigidbody> Destract()
     {
         _currentHealth--;
@@ -52,6 +57,12 @@ public class Car : Destractable
 
             StartCoroutine(ExplosionRoutine());
             Destroyed?.Invoke();
+
+            foreach (var part in _parts)
+            {
+                part.WakeUp();
+            }
+
             return _parts;
         }
 
@@ -60,7 +71,7 @@ public class Car : Destractable
     
     private IEnumerator ExplosionRoutine()
     {
-        yield return null;
+        yield return new WaitForFixedUpdate();
 
         var destractables = new List<Destractable>();
 

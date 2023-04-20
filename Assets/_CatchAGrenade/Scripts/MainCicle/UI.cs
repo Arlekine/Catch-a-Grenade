@@ -4,12 +4,13 @@ public class UI : MonoBehaviour
 {
 
     [SerializeField] private GameObject _startMenu;
+    [SerializeField] private GameObject _gamePlayMenu;
 
     [Space]
     [SerializeField] private Joystick _joystick;
 
     [Space]
-    [SerializeField] private Counter _grenades;
+    [SerializeField] private GrenadesAmountView _grenades;
     [SerializeField] private Counter _enemies;
     [SerializeField] private Counter _cars;
 
@@ -20,10 +21,16 @@ public class UI : MonoBehaviour
     [Space] 
     [SerializeField] private LevelEndPanel _loosePanel;
     [SerializeField] private LevelEndPanel _winPanel;
+
+    [Space] 
+    [SerializeField] private GameObject _moveTutorial;
+    [SerializeField] private GameObject _untapTutorial;
     
     public GameObject StartMenu => _startMenu;
+    public GameObject GamePlayMenu => _gamePlayMenu;
+
     public Joystick Joystick => _joystick;
-    public Counter Grenades => _grenades;
+    public GrenadesAmountView Grenades => _grenades;
     public Counter Enemies => _enemies;
     public Counter Cars => _cars;
 
@@ -32,4 +39,7 @@ public class UI : MonoBehaviour
 
     public LevelEndPanel LoosePanel => _loosePanel;
     public LevelEndPanel WinPanel => _winPanel;
+
+    public GameObject MoveTutorial => _moveTutorial;
+    public GameObject UntapTutorial => _untapTutorial;
 }

@@ -19,6 +19,7 @@ public class Level : MonoBehaviour
     private int _currentTargetCars;
 
     private Context _context;
+    private bool _isLevelEnded;
 
     public void Init(Context context)
     {
@@ -27,7 +28,8 @@ public class Level : MonoBehaviour
         _currentTargetEnemies = _enemiesToDestroy.Length;
         _currentTargetCars = _carsToDestroy.Length;
 
-        _context.UI.Joystick.enabled = true;
+        _isLevelEnded = false;
+        _context.UI.Joystick.enabled = false;
         _context.UI.Grenades.SetMaxValue(_grenadesForLevel);
         _context.UI.Enemies.SetMaxValue(_currentTargetEnemies);
         _context.UI.Cars.SetMaxValue(_currentTargetCars);
@@ -53,9 +55,37 @@ public class Level : MonoBehaviour
         _characterControl.GrenadeThrower.GrenadeExploded += OnGrenadeExploded;
     }
 
+    public void StartLevel()
+    {
+        foreach (var car in _carsToDestroy)
+        {
+            car.Activate();
+        }
+        _context.UI.Joystick.enabled = true;
+
+        if (_context.GameData.IsTutorial)
+        {
+            _context.UI.MoveTutorial.SetActive(true);
+            _context.UI.Joystick.Pressed += ShowUptapTutorial;
+        }
+    }
+
+    private void ShowUptapTutorial()
+    {
+        _context.UI.Joystick.Pressed -= ShowUptapTutorial;
+        _context.UI.MoveTutorial.SetActive(false);
+        _context.UI.UntapTutorial.SetActive(true);
+    }
+
     private void OnGrenadeThrowed()
     {
         _currentGrenades--;
+
+        if (_context.GameData.IsTutorial)
+        {
+            _context.UI.UntapTutorial.SetActive(false);
+            _context.GameData.IsTutorial = false;
+        }
 
         _context.UI.Joystick.enabled = false;
         _context.UI.Grenades.SetCurrentValue(_currentGrenades);
@@ -65,12 +95,21 @@ public class Level : MonoBehaviour
     {
         if (_currentGrenades <= 0)
         {
-            InvokeLoose();
+            StartCoroutine(CheckLooseRoutine());
         }
         else
         {
             _context.UI.Joystick.enabled = true;
         }
+    }
+
+    private IEnumerator CheckLooseRoutine()
+    {
+        yield return null;
+        yield return null;
+
+        if (_currentTargetEnemies > 0 || _currentTargetCars > 0)
+            InvokeLoose();
     }
 
     private void OnCarPathEnded()
@@ -98,12 +137,20 @@ public class Level : MonoBehaviour
     }
     private void InvokeLoose()
     {
+        if (_isLevelEnded)
+            return;
+
+        _isLevelEnded = true;
         _context.UI.Joystick.enabled = false;
         Lost?.Invoke();
     }
 
     private void InvokeWin()
     {
+        if (_isLevelEnded)
+            return;
+
+        _isLevelEnded = true;
         _context.UI.Joystick.enabled = false;
         Win?.Invoke();
     }

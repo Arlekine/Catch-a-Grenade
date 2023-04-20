@@ -42,12 +42,26 @@ public class GameManager : MonoBehaviour
 
         _context.UI.WinPanel.NextClicked += LoadLevel;
         _context.UI.LoosePanel.NextClicked += LoadLevel;
+
+        if (_currentLevel != null)
+        {
+            _currentLevel.Win = null;
+            _currentLevel.Lost = null;
+            Destroy(_currentLevel.gameObject);
+        }
+
+        _currentLevel = Instantiate(_levels[_gameData.CurrentLevel]);
+
+        _currentLevel.Init(_context);
+        _currentLevel.Lost += OnLevelLost;
+        _currentLevel.Win += OnLevelWin;
     }
 
     public void StartGame()
     {
         _context.UI.StartMenu.SetActive(false);
-        LoadLevel();
+        _context.UI.GamePlayMenu.SetActive(true);
+        _currentLevel.StartLevel();
     }
 
     public void HapticSwitch(bool isActive)
@@ -77,6 +91,7 @@ public class GameManager : MonoBehaviour
         _currentLevel.Init(_context);
         _currentLevel.Lost += OnLevelLost;
         _currentLevel.Win += OnLevelWin;
+        _currentLevel.StartLevel();
     }
 
     private void OnLevelWin()

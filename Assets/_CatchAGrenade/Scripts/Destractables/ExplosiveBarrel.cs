@@ -28,7 +28,7 @@ public class ExplosiveBarrel : Destractable
 
     private IEnumerator ExplosionRoutine()
     {
-        yield return null;
+        yield return new WaitForFixedUpdate();
         _audioSource.Play();
         new Explosion(transform.position, _explosionRadius, _explosionForce);
     }

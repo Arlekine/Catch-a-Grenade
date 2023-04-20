@@ -20,6 +20,7 @@ public class CharacterControl : MonoBehaviour
         _cameraCenterRotation = cameraCenterRotation;
 
         _grenadeThrower.SetControl(new Vector2(0.5f, 0.5f));
+
         _joystick.Pressed += () =>
         {
             _isControlling = true;
@@ -48,14 +49,23 @@ public class CharacterControl : MonoBehaviour
     {
         if (_isControlling)
         {
-            var horizontal = _joystick.Horizontal * 0.5f + 0.5f;
-            var vertical = 1 - (_joystick.Vertical * 0.5f + 0.5f);
+            var rawInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
+            rawInput = Quaternion.Euler(0f, 0f, 45f) * rawInput;
 
-            _spineRotation.SetAngle(horizontal);
-            _characterRotator.SetRotate(vertical);
+            var horizontal = rawInput.x * 0.5f + 0.5f;
+            var vertical = 1 - (rawInput.y * 0.5f + 0.5f);
 
-            _grenadeThrower.SetControl(new Vector2(horizontal, vertical));
-            _cameraCenterRotation.Rotate(horizontal);
+            var input = new Vector2(horizontal, vertical);
+            //input = Quaternion.Euler(0, -45f, 0) * input;
+
+            //print(_joystick.Horizontal + " " + _joystick.Vertical);
+            print(rawInput.x + " " + rawInput.y);
+
+            _spineRotation.SetAngle(input.x);
+            _characterRotator.SetRotate(input.y);
+
+            _grenadeThrower.SetControl(new Vector2(input.x, input.y));
+            _cameraCenterRotation.Rotate(input.x);
         }
         else
         {
