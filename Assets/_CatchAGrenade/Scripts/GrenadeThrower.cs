@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class GrenadeThrower : MonoBehaviour
 {
+    public Action GrenadeThrowed;
+    public Action GrenadeExploded;
+
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
 
@@ -12,20 +16,25 @@ public class GrenadeThrower : MonoBehaviour
     [SerializeField] private Transform _throwPointRight;
 
     private float _startSpeed;
+    private Vector3 _standartPoint;
+    private Quaternion _stadartRotation;
+    private Transform _standartParent;
 
     public float StartSpeed => _startSpeed;
     public Transform ThrowPoint => _throwPoint;
     public Transform Grenade => _grenade.transform;
-
-    private Vector3 _standartPoint;
-    private Quaternion _stadartRotation;
-    private Transform _standartParent;
 
     private void Start()
     {
         _standartParent = _grenade.transform.parent;
         _standartPoint = _grenade.transform.localPosition;
         _stadartRotation = _grenade.transform.localRotation;
+        _grenade.Exploded += () => GrenadeExploded?.Invoke();
+    }
+
+    public void SetData(GameData data)
+    {
+        _grenade.SetGameData(data);
     }
 
     public void SetControl(Vector2 control)
@@ -36,7 +45,7 @@ public class GrenadeThrower : MonoBehaviour
 
     public void ReturnGrenade()
     {
-        _grenade.gameObject.SetActive(true);
+        _grenade.GetComponent<MeshRenderer>().enabled = (true);
         _grenade.transform.parent = _standartParent;
         _grenade.transform.localPosition = _standartPoint;
         _grenade.transform.localRotation = _stadartRotation;
@@ -47,5 +56,6 @@ public class GrenadeThrower : MonoBehaviour
     {
         _grenade.transform.parent = null;
         _grenade.MoveAlongTrajectory(_throwPoint.forward, directionAfterHits, _startSpeed);
+        GrenadeThrowed?.Invoke();
     }
 }

@@ -1,18 +1,24 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-10000)]
 public class CharacterControl : MonoBehaviour
 {
     [SerializeField] private CharacterRotator _characterRotator;
     [SerializeField] private SpineRotation _spineRotation;
     [SerializeField] private GrenadeThrower _grenadeThrower;
     [SerializeField] private GrenadeTrajectoryDrawer _trajectoryDrawer;
-    [SerializeField] private Joystick _joystick;
-    [SerializeField] private CameraCenterRotation _cameraCenterRotation;
-
+    
+    private CameraCenterRotation _cameraCenterRotation;
+    private Joystick _joystick;
     private bool _isControlling;
 
-    private void Start()
+    public GrenadeThrower GrenadeThrower => _grenadeThrower;
+
+    public void Init(Joystick joystick, CameraCenterRotation cameraCenterRotation)
     {
+        _joystick = joystick;
+        _cameraCenterRotation = cameraCenterRotation;
+
         _grenadeThrower.SetControl(new Vector2(0.5f, 0.5f));
         _joystick.Pressed += () =>
         {
@@ -24,9 +30,6 @@ public class CharacterControl : MonoBehaviour
 
         _joystick.Released += () =>
         {
-            if (_characterRotator.Animator == null)
-                return;
-
             _isControlling = false;
             _characterRotator.Animator.SetTrigger("Throw");
             _characterRotator.Animator.SetBool("IsAiming", _isControlling);

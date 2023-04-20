@@ -1,27 +1,75 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using PathCreation;
 using UnityEngine;
 
-public class Car : MonoBehaviour
+public class Car : Destractable
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private PathCreator _path;
+    public Action Destroyed;
+    public Action PathEnded;
 
-    [Space] 
-    [SerializeField] private Transform[] _wheels;
+    [SerializeField] private int _health;
+    [SerializeField] private CarMover _carMover;
+    [SerializeField] private GameObject _unbroken;
+    [SerializeField] private GameObject _broken;
+    [SerializeField] private List<Rigidbody> _parts;
+    [SerializeField] private List<Enemy> _passengers;
+    [SerializeField] private ParticleSystem _explosion;
 
-    private float _currentDistance;
+    [Header("Explosion")]
+    [SerializeField] private float _explosionRadius;
+    [SerializeField] private float _explosionForce;
 
-    private void Update()
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _audioSource;
+
+    private int _currentHealth;
+
+    private void Start()
     {
-        _currentDistance += _speed * Time.deltaTime;
-        transform.position = _path.path.GetPointAtDistance(_currentDistance);
-        transform.forward = _path.path.GetDirectionAtDistance(_currentDistance);
+        _currentHealth = _health;
+        _carMover.PathEnded += OnPathEnded;
+    }
 
-        foreach (var wheel in _wheels)
+    private void OnPathEnded()
+    {
+        PathEnded?.Invoke();
+    }
+
+    public override List<Rigidbody> Destract()
+    {
+        _currentHealth--;
+        if (_currentHealth <= 0)
         {
-            wheel.localEulerAngles += Vector3.right * 360f * Time.deltaTime;
+            GetComponent<Collider>().enabled = false;
+            _unbroken.SetActive(false);
+            _broken.SetActive(true);
+
+            var explosion = Instantiate(_explosion, transform.position, Quaternion.identity);
+            explosion.transform.parent = transform.parent;
+
+            _carMover.enabled = false;
+
+            StartCoroutine(ExplosionRoutine());
+            Destroyed?.Invoke();
+            return _parts;
         }
+
+        return new List<Rigidbody>();
+    }
+    
+    private IEnumerator ExplosionRoutine()
+    {
+        yield return null;
+
+        var destractables = new List<Destractable>();
+
+        foreach (var passenger in _passengers)
+        {
+            destractables.Add(passenger);
+        }
+
+        _audioSource.Play();
+        new Explosion(transform.position, _explosionRadius, _explosionForce, destractables);
     }
 }

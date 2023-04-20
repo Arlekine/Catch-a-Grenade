@@ -29,7 +29,7 @@ public class ConcreteWall : Wall
         else
         {
             GetComponent<Collider>().enabled = false;
-            _mainPart.gameObject.SetActive(false);
+            _fullPart.gameObject.SetActive(false);
 
             foreach (var part in _parts)
             {

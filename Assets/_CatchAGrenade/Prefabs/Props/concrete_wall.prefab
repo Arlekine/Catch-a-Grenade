@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5939cbedf7874ad47ac222c54042fe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullPath: {fileID: 0}
+  _fullPart: {fileID: 1259495001842145090}
   _parts:
   - {fileID: 2263840609696379446}
   - {fileID: 1875976060911525356}

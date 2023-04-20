@@ -75,6 +75,7 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
         for (int i = 0; i < _dotsInLine; i++)
         {
             var newDot = Instantiate(_dotLinePrefab);
+            newDot.transform.parent = transform.parent;
             _dots.Add(newDot);
         }
     }

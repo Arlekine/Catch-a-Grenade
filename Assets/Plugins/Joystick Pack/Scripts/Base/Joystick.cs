@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[DefaultExecutionOrder(1000)]
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public Action Pressed;
@@ -41,6 +42,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private Canvas canvas;
     private Camera cam;
+    private bool _isPressed;
 
     private Vector2 input = Vector2.zero;
 
@@ -63,6 +65,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        _isPressed = true;
         OnDrag(eventData);
         Pressed?.Invoke();
     }
@@ -138,7 +141,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
-        Released?.Invoke();
+        var wasPressed = _isPressed;
+        _isPressed = false;
+
+        if (wasPressed)
+            Released?.Invoke();
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

@@ -1,16 +1,26 @@
 using System;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    public Action Exploded;
+
     [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private MeshRenderer _mesh;
     [SerializeField] private Collider _collider;
     [SerializeField] private LayerMask _obstaclesLayer;
 
     [Header("Explosion")] 
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
+
+    [Header("Sounds")] 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _throw;
+    [SerializeField] private AudioClip _explode;
+    [SerializeField] private AudioClip _hit;
 
     private float _speed;
     private bool _isMoving;
@@ -21,8 +31,20 @@ public class Grenade : MonoBehaviour
     private float _nextRaycastPossible;
     private bool IsRaycastPosiible => Time.time > _nextRaycastPossible;
 
+    private GameData _data;
+
+    public void SetGameData(GameData data)
+    {
+        _data = data;
+    }
+
     public void MoveAlongTrajectory(Vector3 startDirection, DirectionAfterHit[] directionAfterHits, float speed)
     {
+        if (_data.HapticOn)
+            MMVibrationManager.Haptic(HapticTypes.LightImpact);
+
+        PlaySound(_throw);
+
         _speed = speed;
         _isMoving = true;
         _currentFlightTime = 0f;
@@ -38,10 +60,24 @@ public class Grenade : MonoBehaviour
 
     private void Blow()
     {
-        gameObject.SetActive(false);
+        _mesh.enabled = (false);
         _isMoving = false;
-        Instantiate(_explosion, transform.position, Quaternion.identity);
+        var explosion = Instantiate(_explosion, transform.position, Quaternion.identity);
+        explosion.transform.parent = transform.parent;
+        Exploded?.Invoke();
+
+        if (_data.HapticOn)
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+
         new Explosion(transform.position, _explosionRadius, _explosionForce);
+
+        PlaySound(_explode);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        _audioSource.clip = clip;
+        _audioSource.Play();
     }
 
     private void OnDrawGizmos()
@@ -97,6 +133,10 @@ public class Grenade : MonoBehaviour
                     if (raycastHit.collider.gameObject.GetComponent<EnemyBodyPart>() != null || _reflections >= 3)
                     {
                         Blow();
+                    }
+                    else
+                    {
+                        PlaySound(_hit);
                     }
                 }
             }

@@ -11,12 +11,16 @@ public class ExplosiveBarrel : Destractable
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _audioSource;
+
     public override List<Rigidbody> Destract()
     {
         GetComponent<Collider>().enabled = false;
         _model.enabled = false;
 
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        var explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        explosion.transform.parent = transform.parent;
         StartCoroutine(ExplosionRoutine());
 
         return new List<Rigidbody>();
@@ -25,6 +29,7 @@ public class ExplosiveBarrel : Destractable
     private IEnumerator ExplosionRoutine()
     {
         yield return null;
+        _audioSource.Play();
         new Explosion(transform.position, _explosionRadius, _explosionForce);
     }
 }
