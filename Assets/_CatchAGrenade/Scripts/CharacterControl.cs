@@ -50,15 +50,12 @@ public class CharacterControl : MonoBehaviour
         if (_isControlling)
         {
             var rawInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
-            rawInput = Quaternion.Euler(0f, 0f, 45f) * rawInput;
+            //rawInput = Quaternion.Euler(0f, 0f, 45f) * rawInput;
 
-            var horizontal = rawInput.x * 0.5f + 0.5f;
-            var vertical = 1 - (rawInput.y * 0.5f + 0.5f);
+            var horizontal = 1 - (rawInput.x * 0.5f + 0.5f);
+            var vertical = (rawInput.y * 0.5f + 0.5f);
 
             var input = new Vector2(horizontal, vertical);
-            //input = Quaternion.Euler(0, -45f, 0) * input;
-
-            //print(_joystick.Horizontal + " " + _joystick.Vertical);
             print(rawInput.x + " " + rawInput.y);
 
             _spineRotation.SetAngle(input.x);

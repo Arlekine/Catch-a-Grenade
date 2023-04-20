@@ -4,6 +4,7 @@ public class Context : MonoBehaviour
 {
     [SerializeField] private UI _ui;
     [SerializeField] private CameraCenterRotation _camera;
+    [SerializeField] private GameManager _gameManager;
 
     public GameData GameData;
 
@@ -12,4 +13,9 @@ public class Context : MonoBehaviour
 
     public bool IsSoundOn => GameData.SoundOn;
     public bool IsHapticOn => GameData.HapticOn;
+
+    public void SaveData()
+    {
+        _gameManager.SaveData();
+    }
 }

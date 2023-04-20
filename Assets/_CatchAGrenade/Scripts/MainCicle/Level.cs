@@ -29,7 +29,7 @@ public class Level : MonoBehaviour
         _currentTargetCars = _carsToDestroy.Length;
 
         _isLevelEnded = false;
-        _context.UI.Joystick.enabled = false;
+        _context.UI.Joystick.enabled = true;
         _context.UI.Grenades.SetMaxValue(_grenadesForLevel);
         _context.UI.Enemies.SetMaxValue(_currentTargetEnemies);
         _context.UI.Cars.SetMaxValue(_currentTargetCars);
@@ -53,6 +53,12 @@ public class Level : MonoBehaviour
 
         _characterControl.GrenadeThrower.GrenadeThrowed += OnGrenadeThrowed;
         _characterControl.GrenadeThrower.GrenadeExploded += OnGrenadeExploded;
+
+        if (_context.GameData.IsTutorial)
+        {
+            _context.UI.MoveTutorial.SetActive(true);
+            _context.UI.Joystick.Pressed += ShowUptapTutorial;
+        }
     }
 
     public void StartLevel()
@@ -60,13 +66,6 @@ public class Level : MonoBehaviour
         foreach (var car in _carsToDestroy)
         {
             car.Activate();
-        }
-        _context.UI.Joystick.enabled = true;
-
-        if (_context.GameData.IsTutorial)
-        {
-            _context.UI.MoveTutorial.SetActive(true);
-            _context.UI.Joystick.Pressed += ShowUptapTutorial;
         }
     }
 
@@ -85,6 +84,7 @@ public class Level : MonoBehaviour
         {
             _context.UI.UntapTutorial.SetActive(false);
             _context.GameData.IsTutorial = false;
+            _context.SaveData();
         }
 
         _context.UI.Joystick.enabled = false;

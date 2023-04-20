@@ -55,10 +55,13 @@ public class GameManager : MonoBehaviour
         _currentLevel.Init(_context);
         _currentLevel.Lost += OnLevelLost;
         _currentLevel.Win += OnLevelWin;
+
+        _context.UI.Joystick.Pressed += StartGame;
     }
 
     public void StartGame()
     {
+        _context.UI.Joystick.Pressed -= StartGame;
         _context.UI.StartMenu.SetActive(false);
         _context.UI.GamePlayMenu.SetActive(true);
         _currentLevel.StartLevel();
@@ -111,7 +114,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LevelLoadRoutine(false));
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         PlayerPrefs.SetString(GameDataPlayerPrefs, JsonUtility.ToJson(_gameData));
     }
