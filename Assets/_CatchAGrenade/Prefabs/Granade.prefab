@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3714791074158528563}
   - component: {fileID: 297885572424124310}
   - component: {fileID: 2577952416647164764}
-  - component: {fileID: 3749017655026713512}
   - component: {fileID: 3749017655026713511}
   - component: {fileID: 5465964871350857921}
   m_Layer: 0
@@ -86,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3749017655026713512
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4091034690930250377}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0.00000011920929, y: -0.00000011920929, z: -0.00000011920929}
 --- !u!114 &3749017655026713511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,10 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosion: {fileID: 19800004, guid: 084c6a87873fd6e4da7978a01aa18b34, type: 3}
   _mesh: {fileID: 2577952416647164764}
-  _collider: {fileID: 3749017655026713512}
+  _collider: {fileID: 0}
   _obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 193
   _explosionRadius: 1.5
   _explosionForce: 1250
   _audioSource: {fileID: 5465964871350857921}

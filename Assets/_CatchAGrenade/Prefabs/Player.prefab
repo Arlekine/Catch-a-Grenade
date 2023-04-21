@@ -391,11 +391,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac540ad1f5537d41b93e1213c27f989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsControlling: 0
   _characterRotator: {fileID: 4387137464497237361}
   _spineRotation: {fileID: 4387137464978495519}
   _grenadeThrower: {fileID: 4387137464497237372}
   _trajectoryDrawer: {fileID: 4387137464497237375}
-  _joystick: {fileID: 0}
+  _screenMovingParameter: 0.003
 --- !u!114 &4387137464497237375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +416,7 @@ MonoBehaviour:
   _dotsInLine: 50
   _obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 193
   _gizmoAccuracy: 30
   _gizmoMaxLength: 30
 --- !u!114 &4387137464497237372
@@ -430,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033929c1936d9f04cab90a9635ed777f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSpeed: 10
+  _minSpeed: 5
   _maxSpeed: 25
   _grenade: {fileID: 4387137463985529089}
   _throwPoint: {fileID: 0}

@@ -22,7 +22,7 @@ public class GrenadeThrower : MonoBehaviour
 
     public float StartSpeed => _startSpeed;
     public Transform ThrowPoint => _throwPoint;
-    public Transform Grenade => _grenade.transform;
+    public Grenade Grenade => _grenade;
 
     private void Start()
     {

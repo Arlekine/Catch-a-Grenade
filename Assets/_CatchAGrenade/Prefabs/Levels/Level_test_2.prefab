@@ -264,6 +264,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grenadesForLevel: 3
   _characterControl: {fileID: 1843891856506539776}
+  _levelZone:
+    _yMax: 10
+    _radius: 50
+    _center: {x: 0, y: 0, z: 0}
   _enemiesToDestroy: []
   _carsToDestroy:
   - {fileID: 3297186367077593214}
@@ -1136,10 +1140,6 @@ PrefabInstance:
     - target: {fileID: 4387137464497237374, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}
       propertyPath: _cameraCenterRotation
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387137464497237375, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}
-      propertyPath: _obstaclesLayer.m_Bits
-      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}

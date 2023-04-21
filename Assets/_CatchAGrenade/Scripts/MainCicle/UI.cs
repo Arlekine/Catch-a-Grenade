@@ -7,9 +7,6 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject _gamePlayMenu;
 
     [Space]
-    [SerializeField] private Joystick _joystick;
-
-    [Space]
     [SerializeField] private GrenadesAmountView _grenades;
     [SerializeField] private Counter _enemies;
     [SerializeField] private Counter _cars;
@@ -29,7 +26,6 @@ public class UI : MonoBehaviour
     public GameObject StartMenu => _startMenu;
     public GameObject GamePlayMenu => _gamePlayMenu;
 
-    public Joystick Joystick => _joystick;
     public GrenadesAmountView Grenades => _grenades;
     public Counter Enemies => _enemies;
     public Counter Cars => _cars;

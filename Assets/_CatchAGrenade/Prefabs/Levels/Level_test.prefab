@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 6
   _path: {fileID: 1843891856921350454}
+  _audioSource: {fileID: 0}
   _wheels:
   - {fileID: 7840005452057466545}
   - {fileID: 3188297852188099870}
@@ -273,6 +274,7 @@ MonoBehaviour:
   _explosion: {fileID: 19800008, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
   _explosionRadius: 4
   _explosionForce: 500
+  _audioSource: {fileID: 0}
 --- !u!65 &1537900169231650075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1471,10 +1473,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grenadesForLevel: 3
   _characterControl: {fileID: 1843891856506539776}
+  _levelZone:
+    _yMax: 10
+    _radius: 50
+    _center: {x: 0, y: 0, z: 0}
   _enemiesToDestroy:
   - {fileID: 1843891856692016458}
   _carsToDestroy: []
-  _loseOnPathEnd: 0
+  _loseOnCarPathEnd: 0
 --- !u!1 &1843891856001620815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7821,10 +7827,6 @@ PrefabInstance:
     - target: {fileID: 4387137464497237374, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}
       propertyPath: _cameraCenterRotation
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387137464497237375, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}
-      propertyPath: _obstaclesLayer.m_Bits
-      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afaab1769d91fa94ba3568aaeb378129, type: 3}

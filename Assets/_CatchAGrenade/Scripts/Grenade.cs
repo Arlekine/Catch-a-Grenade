@@ -22,6 +22,7 @@ public class Grenade : MonoBehaviour
     [SerializeField] private AudioClip _explode;
     [SerializeField] private AudioClip _hit;
 
+    private Zone _zone;
     private float _speed;
     private bool _isMoving;
     private Vector3 _currentDirection;
@@ -32,6 +33,14 @@ public class Grenade : MonoBehaviour
     private bool IsRaycastPosiible => Time.time > _nextRaycastPossible;
 
     private GameData _data;
+
+    private float _inColliderTime;
+    private bool _isInCollider;
+
+    public void SetZone(Zone zone)
+    {
+        _zone = zone;
+    }
 
     public void SetGameData(GameData data)
     {
@@ -109,16 +118,15 @@ public class Grenade : MonoBehaviour
             if (IsRaycastPosiible)
             {
                 RaycastHit raycastHit;
-                if (Physics.Raycast(transform.position, stepDirection.normalized, out raycastHit,
-                        stepDirection.magnitude, _obstaclesLayer))
+                if (Physics.Raycast(transform.position, stepDirection.normalized, out raycastHit, stepDirection.magnitude * 3, _obstaclesLayer))
                 {
                     currentPosition = raycastHit.point;
 
-                    if (Vector3.Distance(raycastHit.point, _directionAfterHits[_reflections].HitPoint) > 0.2f)
+                    if (Vector3.Distance(raycastHit.point, _directionAfterHits[_reflections].HitPoint) > 0.3f)
                     {
                         _currentDirection = -stepDirection +
                                             2 * (Vector3.Dot(stepDirection, raycastHit.normal) * raycastHit.normal);
-                        _currentDirection = -_currentDirection;
+                        _currentDirection = -_currentDirection * 3;
                         _currentFlightTime = 0;
                     }
                     else
@@ -127,18 +135,69 @@ public class Grenade : MonoBehaviour
                         _currentDirection = _directionAfterHits[_reflections].AfterHitDirection;
                     }
 
-                    _nextRaycastPossible = Time.time + 0.05f;
+                    _nextRaycastPossible = Time.time + 0.1f;
                     _reflections++;
 
                     if (raycastHit.collider.gameObject.GetComponent<EnemyBodyPart>() != null || _reflections >= 3)
                     {
                         Blow();
+                        return;
                     }
                     else
                     {
                         PlaySound(_hit);
                     }
                 }
+            }
+
+            var isInCollider = false;
+            var colliders = Physics.OverlapSphere(currentPosition, 0.3f);
+
+            foreach (var col in colliders)
+            {
+                if (col.bounds.Contains(transform.position))
+                {
+                    isInCollider = true;
+
+                    break;
+                }
+            }
+
+            if (isInCollider)
+            {
+                if (_isInCollider == false)
+                {
+                    _isInCollider = true;
+                    _inColliderTime = Time.time;
+                }
+            }
+            else
+            {
+                _isInCollider = false;
+                _inColliderTime = Time.time;
+            }
+
+            if (Time.time - _inColliderTime > 0.05f)
+            {
+                _currentDirection = -_currentDirection;
+
+                _inColliderTime = Time.time;
+                _reflections++;
+                _currentFlightTime = 0;
+
+                _nextRaycastPossible = Time.time + 0.075f;
+
+                if (_reflections >= 3)
+                {
+                    Blow();
+                    return;
+                }
+            }
+
+            if (_zone.IsInZone(currentPosition) == false)
+            {
+                Blow();
+                return;
             }
 
             transform.position = currentPosition;
@@ -151,4 +210,27 @@ public struct DirectionAfterHit
 {
     public Vector3 HitPoint;
     public Vector3 AfterHitDirection;
+}
+
+[Serializable]
+public class Zone
+{
+    [SerializeField] private float _yMax;
+    [SerializeField] private float _radius;
+    [SerializeField] private Vector3 _center;
+
+    public Vector3 Center => _center;
+    public float Radius => _radius;
+
+    public bool IsInZone(Vector3 point)
+    {
+        var yDistance = Mathf.Abs(point.y - _center.y);
+        point.y = _center.y;
+        var planeDistance = Vector3.Distance(point, _center);
+
+        if (planeDistance >= _radius || yDistance >= _yMax)
+            return false;
+        else
+            return true;
+    }
 }

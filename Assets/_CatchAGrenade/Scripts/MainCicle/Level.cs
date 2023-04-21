@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lean.Touch;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -10,6 +11,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] private int _grenadesForLevel;
     [SerializeField] private CharacterControl _characterControl;
+    [SerializeField] private Zone _levelZone;
     [SerializeField] private Enemy[] _enemiesToDestroy;
     [SerializeField] private Car[] _carsToDestroy;
     [SerializeField] private bool _loseOnCarPathEnd;
@@ -29,7 +31,7 @@ public class Level : MonoBehaviour
         _currentTargetCars = _carsToDestroy.Length;
 
         _isLevelEnded = false;
-        _context.UI.Joystick.enabled = true;
+        _characterControl.IsControlling = true;
         _context.UI.Grenades.SetMaxValue(_grenadesForLevel);
         _context.UI.Enemies.SetMaxValue(_currentTargetEnemies);
         _context.UI.Cars.SetMaxValue(_currentTargetCars);
@@ -37,8 +39,10 @@ public class Level : MonoBehaviour
         _context.UI.Enemies.gameObject.SetActive(_currentTargetEnemies > 0);
         _context.UI.Cars.gameObject.SetActive(_currentTargetCars > 0);
 
-        _characterControl.Init(context.UI.Joystick, context.Camera);
+        _characterControl.Init(context.Camera);
         _characterControl.GrenadeThrower.SetData(_context.GameData);
+
+        _characterControl.GrenadeThrower.Grenade.SetZone(_levelZone);
 
         foreach (var enemy in _enemiesToDestroy)
         {
@@ -57,7 +61,7 @@ public class Level : MonoBehaviour
         if (_context.GameData.IsTutorial)
         {
             _context.UI.MoveTutorial.SetActive(true);
-            _context.UI.Joystick.Pressed += ShowUptapTutorial;
+            LeanTouch.OnFingerDown += ShowUptapTutorial;
         }
     }
 
@@ -69,9 +73,15 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void ShowUptapTutorial()
+    private void OnDrawGizmos()
     {
-        _context.UI.Joystick.Pressed -= ShowUptapTutorial;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(_levelZone.Center, _levelZone.Radius);
+    }
+
+    private void ShowUptapTutorial(LeanFinger finger)
+    {
+        LeanTouch.OnFingerDown -= ShowUptapTutorial;
         _context.UI.MoveTutorial.SetActive(false);
         _context.UI.UntapTutorial.SetActive(true);
     }
@@ -87,7 +97,7 @@ public class Level : MonoBehaviour
             _context.SaveData();
         }
 
-        _context.UI.Joystick.enabled = false;
+        _characterControl.IsControlling = false;
         _context.UI.Grenades.SetCurrentValue(_currentGrenades);
     }
 
@@ -99,7 +109,7 @@ public class Level : MonoBehaviour
         }
         else
         {
-            _context.UI.Joystick.enabled = true;
+            _characterControl.IsControlling = true;
         }
     }
 
@@ -141,7 +151,7 @@ public class Level : MonoBehaviour
             return;
 
         _isLevelEnded = true;
-        _context.UI.Joystick.enabled = false;
+        _characterControl.IsControlling = false;
         Lost?.Invoke();
     }
 
@@ -151,7 +161,7 @@ public class Level : MonoBehaviour
             return;
 
         _isLevelEnded = true;
-        _context.UI.Joystick.enabled = false;
+        _characterControl.IsControlling = false;
         Win?.Invoke();
     }
 }

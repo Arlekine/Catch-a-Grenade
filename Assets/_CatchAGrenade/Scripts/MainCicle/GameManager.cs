@@ -1,4 +1,5 @@
 using System.Collections;
+using Lean.Touch;
 using MoreMountains.NiceVibrations;
 using UnityEngine;
 
@@ -56,12 +57,12 @@ public class GameManager : MonoBehaviour
         _currentLevel.Lost += OnLevelLost;
         _currentLevel.Win += OnLevelWin;
 
-        _context.UI.Joystick.Pressed += StartGame;
+        LeanTouch.OnFingerDown += StartGame;
     }
 
-    public void StartGame()
+    public void StartGame(LeanFinger finger)
     {
-        _context.UI.Joystick.Pressed -= StartGame;
+        LeanTouch.OnFingerDown -= StartGame;
         _context.UI.StartMenu.SetActive(false);
         _context.UI.GamePlayMenu.SetActive(true);
         _currentLevel.StartLevel();

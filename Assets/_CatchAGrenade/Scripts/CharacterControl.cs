@@ -1,68 +1,98 @@
+using System.Collections;
+using Lean.Touch;
 using UnityEngine;
 
 [DefaultExecutionOrder(-10000)]
 public class CharacterControl : MonoBehaviour
 {
+    public bool IsControlling;
+
     [SerializeField] private CharacterRotator _characterRotator;
     [SerializeField] private SpineRotation _spineRotation;
     [SerializeField] private GrenadeThrower _grenadeThrower;
     [SerializeField] private GrenadeTrajectoryDrawer _trajectoryDrawer;
-    
+    [SerializeField] private float _screenMovingParameter = 0.1f;
+
     private CameraCenterRotation _cameraCenterRotation;
-    private Joystick _joystick;
-    private bool _isControlling;
+    private LeanFinger _currentFinger;
+    private bool _canThrow;
 
     public GrenadeThrower GrenadeThrower => _grenadeThrower;
 
-    public void Init(Joystick joystick, CameraCenterRotation cameraCenterRotation)
+    private Vector2 _currentInput;
+
+    public void Init(CameraCenterRotation cameraCenterRotation)
     {
-        _joystick = joystick;
         _cameraCenterRotation = cameraCenterRotation;
 
         _grenadeThrower.SetControl(new Vector2(0.5f, 0.5f));
+        _currentInput = new Vector2(0.5f, 0.5f);
 
-        _joystick.Pressed += () =>
-        {
-            _isControlling = true;
-            _characterRotator.Animator.SetBool("IsAiming", _isControlling);
-            _trajectoryDrawer.CreateLine();
-            _grenadeThrower.ReturnGrenade();
-        };
-
-        _joystick.Released += () =>
-        {
-            _isControlling = false;
-            _characterRotator.Animator.SetTrigger("Throw");
-            _characterRotator.Animator.SetBool("IsAiming", _isControlling);
-            _grenadeThrower.Throw(_trajectoryDrawer.DirectionAfterHits);
-            _trajectoryDrawer.HideLine();
-        };
+        LeanTouch.OnFingerDown += FingerDown;
+        LeanTouch.OnFingerUp += FingerUp;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        _joystick.Pressed = null;
-        _joystick.Released = null;
+        LeanTouch.OnFingerDown -= FingerDown;
+        LeanTouch.OnFingerUp -= FingerUp;
+
+    }
+
+    private void FingerDown(LeanFinger finger)
+    {
+        if (_currentFinger != null || IsControlling == false)
+            return;
+
+        _canThrow = false;
+        _currentFinger = finger;
+        _characterRotator.Animator.SetBool("IsAiming", true);
+        _trajectoryDrawer.CreateLine();
+        _grenadeThrower.ReturnGrenade();
+
+        StopAllCoroutines();
+        StartCoroutine(ActivateControl());
+    }
+
+    private IEnumerator ActivateControl()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _canThrow = true;
+    }
+
+    private void FingerUp(LeanFinger finger)
+    {
+        if (finger != _currentFinger)
+            return;
+
+        _currentFinger = null;
+
+        if (_canThrow)
+        {
+            _characterRotator.Animator.SetTrigger("Throw");
+            _grenadeThrower.Throw(_trajectoryDrawer.DirectionAfterHits);
+        }
+
+        _characterRotator.Animator.SetBool("IsAiming", false);
+        _trajectoryDrawer.HideLine();
     }
 
     private void Update()
     {
-        if (_isControlling)
+        if (IsControlling && _currentFinger != null)
         {
-            var rawInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
-            //rawInput = Quaternion.Euler(0f, 0f, 45f) * rawInput;
+            var rawDelta = _currentFinger.ScaledDelta;
+            rawDelta.x = -rawDelta.x;
 
-            var horizontal = 1 - (rawInput.x * 0.5f + 0.5f);
-            var vertical = (rawInput.y * 0.5f + 0.5f);
+            _currentInput += rawDelta * _screenMovingParameter;
+            _currentInput.x = Mathf.Clamp01(_currentInput.x);
+            _currentInput.y = Mathf.Clamp01(_currentInput.y);
 
-            var input = new Vector2(horizontal, vertical);
-            print(rawInput.x + " " + rawInput.y);
+            _spineRotation.SetAngle(_currentInput.x);
+            _characterRotator.SetRotate(_currentInput.y);
 
-            _spineRotation.SetAngle(input.x);
-            _characterRotator.SetRotate(input.y);
-
-            _grenadeThrower.SetControl(new Vector2(input.x, input.y));
-            _cameraCenterRotation.Rotate(input.x);
+            _grenadeThrower.SetControl(new Vector2(_currentInput.x, _currentInput.y));
+            _cameraCenterRotation.Rotate(_currentInput.x);
         }
         else
         {

@@ -99,7 +99,7 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
         float time = _gizmoMaxLength / _grenadeThrower.StartSpeed;
         float stepTime = time / _dotsInLine;
 
-        Vector3 currentPosition = _grenadeThrower.Grenade.position;
+        Vector3 currentPosition = _grenadeThrower.Grenade.transform.position;
         Vector3 previousPosition = currentPosition;
 
         Vector3 currentDirection = _grenadeThrower.ThrowPoint.forward;
