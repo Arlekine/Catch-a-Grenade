@@ -143,7 +143,7 @@ public class GrenadeTrajectoryDrawer : MonoBehaviour
 
                     reflections++;
 
-                    if (raycastHit.collider.gameObject.GetComponent<EnemyBodyPart>() != null)
+                    if (raycastHit.collider.gameObject.CompareTag("InstantExplode"))
                     {
                         reflections = 3;
                     }

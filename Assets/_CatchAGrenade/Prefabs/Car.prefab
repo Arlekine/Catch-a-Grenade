@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1653174038513537442}
   m_Layer: 7
   m_Name: body_part_13
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,9 +196,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5149170021905348524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -311,9 +311,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &4954314806133591181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -426,9 +426,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &9053872235369826652
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -541,9 +541,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8471809537526117705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 782204285778312228}
   m_Layer: 7
   m_Name: Unbroken
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,9 +790,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &7320159295920733820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -905,9 +905,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &6789126394221700651
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1020,9 +1020,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &703553543383472607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1195,9 +1195,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3171267456548474918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1310,9 +1310,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8379463543123403157
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1425,9 +1425,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5933670965345297900
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1540,9 +1540,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &1192803572620910839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1655,9 +1655,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &2785679745359720582
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1770,9 +1770,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8081074983923737937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1885,9 +1885,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8001789394810577829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2000,9 +2000,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &6618864398509222740
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2115,9 +2115,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &30781693180408378
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2230,9 +2230,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8585187684437517616
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2345,9 +2345,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &6374619741753246384
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2460,9 +2460,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &9039178565612645547
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2575,9 +2575,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &296887669199188749
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2690,9 +2690,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &4095751448850787606
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2805,9 +2805,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3562192929260929203
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2920,9 +2920,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5450659564754441509
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3035,9 +3035,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &6359886608162646129
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3150,9 +3150,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &919564509117504988
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3265,9 +3265,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5988928919922397575
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3380,9 +3380,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3984416919690334950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3495,9 +3495,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &1404408902108637746
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3610,9 +3610,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &8784862737824353270
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3862,7 +3862,7 @@ GameObject:
   - component: {fileID: 5582082266180782075}
   m_Layer: 7
   m_Name: body_part_7
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3960,7 +3960,7 @@ GameObject:
   - component: {fileID: 1964811176697845269}
   m_Layer: 7
   m_Name: body_part_5
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4055,7 +4055,7 @@ GameObject:
   - component: {fileID: 152662656488117200}
   m_Layer: 7
   m_Name: Body_GRP
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4113,7 +4113,7 @@ GameObject:
   - component: {fileID: 926186521197597584}
   m_Layer: 7
   m_Name: body_part_23
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4211,7 +4211,7 @@ GameObject:
   - component: {fileID: 5782761301967101155}
   m_Layer: 7
   m_Name: body_part_3
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4309,7 +4309,7 @@ GameObject:
   - component: {fileID: 6614499131134336355}
   m_Layer: 7
   m_Name: wheel_4
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4407,7 +4407,7 @@ GameObject:
   - component: {fileID: 467184458066207133}
   m_Layer: 7
   m_Name: body_part_17
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4505,7 +4505,7 @@ GameObject:
   - component: {fileID: 2951681118113383693}
   m_Layer: 7
   m_Name: weapon
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4603,7 +4603,7 @@ GameObject:
   - component: {fileID: 6317187992775851582}
   m_Layer: 7
   m_Name: body_part_21
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4701,7 +4701,7 @@ GameObject:
   - component: {fileID: 2703312701235370529}
   m_Layer: 7
   m_Name: body_part_2
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4799,7 +4799,7 @@ GameObject:
   - component: {fileID: 5811891791544297264}
   m_Layer: 7
   m_Name: body_part_8
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 3939685129269792948}
   m_Layer: 7
   m_Name: body_part_16
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4995,7 +4995,7 @@ GameObject:
   - component: {fileID: 5199654241998834493}
   m_Layer: 7
   m_Name: wheel_0
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5093,7 +5093,7 @@ GameObject:
   - component: {fileID: 7042705777288076067}
   m_Layer: 7
   m_Name: body_part_20
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5191,7 +5191,7 @@ GameObject:
   - component: {fileID: 2531932819893869274}
   m_Layer: 7
   m_Name: body_part_12
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5289,7 +5289,7 @@ GameObject:
   - component: {fileID: 8105092701448177551}
   m_Layer: 7
   m_Name: wheel_2
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5387,7 +5387,7 @@ GameObject:
   - component: {fileID: 5745885769210840077}
   m_Layer: 7
   m_Name: body_part_14
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5485,7 +5485,7 @@ GameObject:
   - component: {fileID: 7642181439589647334}
   m_Layer: 7
   m_Name: wheel_1
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5583,7 +5583,7 @@ GameObject:
   - component: {fileID: 4752999359591740742}
   m_Layer: 7
   m_Name: body_part_18
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5681,7 +5681,7 @@ GameObject:
   - component: {fileID: 8121078023252008046}
   m_Layer: 7
   m_Name: body_part_10
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5779,7 +5779,7 @@ GameObject:
   - component: {fileID: 4278764829521858324}
   m_Layer: 7
   m_Name: body_part_11
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5877,7 +5877,7 @@ GameObject:
   - component: {fileID: 998151895457564884}
   m_Layer: 7
   m_Name: body_part_4
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5975,7 +5975,7 @@ GameObject:
   - component: {fileID: 6761854622804816874}
   m_Layer: 7
   m_Name: body_part_9
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6073,7 +6073,7 @@ GameObject:
   - component: {fileID: 3594711109858308981}
   m_Layer: 7
   m_Name: body_part_6
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6171,7 +6171,7 @@ GameObject:
   - component: {fileID: 1451715880886893239}
   m_Layer: 7
   m_Name: wheel_3
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6269,7 +6269,7 @@ GameObject:
   - component: {fileID: 8543945156219827676}
   m_Layer: 7
   m_Name: body_part_19
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6367,7 +6367,7 @@ GameObject:
   - component: {fileID: 2102411688124937228}
   m_Layer: 7
   m_Name: body_part_15
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6465,7 +6465,7 @@ GameObject:
   - component: {fileID: 8412864560133288902}
   m_Layer: 7
   m_Name: body_part_22
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6563,7 +6563,7 @@ GameObject:
   - component: {fileID: 2858041927771565824}
   m_Layer: 7
   m_Name: body_part_1
-  m_TagString: Untagged
+  m_TagString: InstantExplode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6657,6 +6657,10 @@ PrefabInstance:
     - target: {fileID: 450533520649753979, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 450533520649753979, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 757154527673458178, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_Mass
@@ -7044,6 +7048,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 450533520649753979, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154527673458179, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0198342
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154527673458179, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.10071446
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154527717879859, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.247936
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154527717879859, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000022351742
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154527717879859, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000044703484
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528078154042, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.09835942
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528078154042, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.023177275
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528078154042, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.10286459
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528672090797, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.18982412
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528672090797, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.006756914
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528672090797, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0000002682209
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528775993658, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.24793598
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528775993658, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528775993658, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000004172325
+      objectReference: {fileID: 0}
     - target: {fileID: 757154528802137231, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: _enemyPosition
       value: 2
@@ -7075,6 +7139,66 @@ PrefabInstance:
     - target: {fileID: 757154528802137231, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: Exploded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528903097802, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -1.563194e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528903097802, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000022351742
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154528903097802, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.06500892
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529004970102, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.18669303
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529004970102, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.00019406849
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529004970102, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0000003427267
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529019246646, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.17024325
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529019246646, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.00000014156103
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529019246646, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529060536306, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.1702434
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529060536306, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.00000017881393
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529060536306, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000000029802322
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529339656531, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000004693275
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529339656531, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.00000008940697
+      objectReference: {fileID: 0}
+    - target: {fileID: 757154529339656531, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.06500883
       objectReference: {fileID: 0}
     - target: {fileID: 939930112194531265, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_RootOrder

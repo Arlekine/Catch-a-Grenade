@@ -138,7 +138,7 @@ public class Grenade : MonoBehaviour
                     _nextRaycastPossible = Time.time + 0.1f;
                     _reflections++;
 
-                    if (raycastHit.collider.gameObject.GetComponent<EnemyBodyPart>() != null || _reflections >= 3)
+                    if (raycastHit.collider.gameObject.CompareTag("InstantExplode") || _reflections >= 3)
                     {
                         Blow();
                         return;

@@ -58,11 +58,6 @@ public class Car : Destractable
             StartCoroutine(ExplosionRoutine());
             Destroyed?.Invoke();
 
-            foreach (var part in _parts)
-            {
-                part.WakeUp();
-            }
-
             return _parts;
         }
 
