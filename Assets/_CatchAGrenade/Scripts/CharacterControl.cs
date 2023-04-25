@@ -21,6 +21,13 @@ public class CharacterControl : MonoBehaviour
 
     private Vector2 _currentInput;
 
+    GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     public void Init(CameraCenterRotation cameraCenterRotation)
     {
         _cameraCenterRotation = cameraCenterRotation;
@@ -41,7 +48,7 @@ public class CharacterControl : MonoBehaviour
 
     private void FingerDown(LeanFinger finger)
     {
-        if (_currentFinger != null || IsControlling == false)
+        if (_currentFinger != null || IsControlling == false || gameManager._startGame == false)
             return;
 
         _canThrow = false;

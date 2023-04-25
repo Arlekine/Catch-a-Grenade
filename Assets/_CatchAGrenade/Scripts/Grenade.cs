@@ -8,6 +8,7 @@ public class Grenade : MonoBehaviour
     public Action Exploded;
 
     [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private GameObject _trail;
     [SerializeField] private MeshRenderer _mesh;
     [SerializeField] private Collider _collider;
     [SerializeField] private LayerMask _obstaclesLayer;
@@ -36,6 +37,11 @@ public class Grenade : MonoBehaviour
 
     private float _inColliderTime;
     private bool _isInCollider;
+
+    private void Start()
+    {
+        _trail.SetActive(false);
+    }
 
     public void SetZone(Zone zone)
     {
@@ -75,6 +81,8 @@ public class Grenade : MonoBehaviour
         explosion.transform.parent = transform.parent;
         Exploded?.Invoke();
 
+        FindObjectOfType<Shaker>().Shake(0);
+
         if (_data.HapticOn)
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
 
@@ -104,6 +112,8 @@ public class Grenade : MonoBehaviour
     {
         if (_isMoving)
         {
+            _trail.SetActive(true);
+
             _currentFlightTime += Time.deltaTime;
 
             var forwardVector = _currentDirection * _speed * Time.deltaTime;

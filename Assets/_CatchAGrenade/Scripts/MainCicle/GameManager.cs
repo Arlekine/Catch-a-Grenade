@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     private const string GameDataPlayerPrefs = "GameData";
 
+    public bool _startGame;
+
     [SerializeField] private Context _context;
     [SerializeField] private Transform _cameraHolder;
     [SerializeField] private Level[] _levels;
@@ -57,11 +59,18 @@ public class GameManager : MonoBehaviour
         _currentLevel.Lost += OnLevelLost;
         _currentLevel.Win += OnLevelWin;
 
-        LeanTouch.OnFingerDown += StartGame;
+        LeanTouch.OnFingerSet += StartGame;
+    }
+
+    public void ClickStart()
+    {
+        _startGame = true;
     }
 
     public void StartGame(LeanFinger finger)
     {
+        if (!_startGame) return;
+
         LeanTouch.OnFingerDown -= StartGame;
         _context.UI.StartMenu.SetActive(false);
         _context.UI.GamePlayMenu.SetActive(true);
