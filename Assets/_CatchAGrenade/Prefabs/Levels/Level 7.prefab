@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8e173946af3d749be9433c761ad961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grenadesForLevel: 4
+  _grenadesForLevel: 5
   _characterControl: {fileID: 1843891856506539776}
   _levelZone:
     _yMax: 10
