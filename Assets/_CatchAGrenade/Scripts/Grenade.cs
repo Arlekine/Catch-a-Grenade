@@ -213,6 +213,10 @@ public class Grenade : MonoBehaviour
             transform.position = currentPosition;
             transform.eulerAngles += (Vector3.up * 600f * Time.deltaTime);
         }
+        else
+        {
+            _trail.SetActive(false);
+        }
     }
 }
 

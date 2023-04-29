@@ -131,6 +131,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LevelLoadRoutine(bool win)
     {
+        _context.UI.GamePlayMenu.SetActive(false);
+
         yield return new WaitForSeconds(2.5f);
 
         if (win)
@@ -151,5 +153,7 @@ public class GameManager : MonoBehaviour
 
             _context.UI.LoosePanel.Open();
         }
+
+        _context.UI.GamePlayMenu.SetActive(false);
     }
 }
