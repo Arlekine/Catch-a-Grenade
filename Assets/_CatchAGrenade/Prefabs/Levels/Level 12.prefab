@@ -198,7 +198,7 @@ MonoBehaviour:
   - {fileID: 5912158366641437380}
   _carsToDestroy:
   - {fileID: 4940372070131757665}
-  _loseOnCarPathEnd: 0
+  _loseOnCarPathEnd: 1
 --- !u!1 &1843891856001620815
 GameObject:
   m_ObjectHideFlags: 0
