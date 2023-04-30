@@ -838,6 +838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1843891855993914393}
     m_Modifications:
+    - target: {fileID: 3678307568452087679, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
+      propertyPath: _explosionRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5830666527359660016, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
       propertyPath: m_Name
       value: Barrel
@@ -848,7 +852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259555713565691637, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.58
+      value: -5.21
       objectReference: {fileID: 0}
     - target: {fileID: 8259555713565691637, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -856,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259555713565691637, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.77
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 8259555713565691637, guid: 61f088bf38233ea41ab8989b5bb8d2cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1427,7 +1431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 939930112194531265, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.69
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 939930112194531265, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1435,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 939930112194531265, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.61
+      value: 7.93
       objectReference: {fileID: 0}
     - target: {fileID: 939930112194531265, guid: d53ad01df8510bf44adeb237f885d5fb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1562,6 +1566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1843891855993914393}
     m_Modifications:
+    - target: {fileID: 321038487994038388, guid: 1b5963f11a97a8747af709a23c15e244, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6483151002027388334, guid: 1b5963f11a97a8747af709a23c15e244, type: 3}
       propertyPath: m_Name
       value: Metal_Colum
@@ -2724,6 +2732,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1843891855993914393}
     m_Modifications:
+    - target: {fileID: 321038487994038388, guid: 1b5963f11a97a8747af709a23c15e244, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6483151002027388334, guid: 1b5963f11a97a8747af709a23c15e244, type: 3}
       propertyPath: m_Name
       value: Metal_Colum (1)
